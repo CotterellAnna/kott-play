@@ -1,0 +1,7 @@
+body{
+    background: #0D0C0F;
+    width: 100vw;
+}
+input[type = range]{
+    height: 4px;
+}
