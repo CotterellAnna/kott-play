@@ -181,9 +181,14 @@ $(function(){
             if(track_index < music_list.length - 1 && isRandom == false){
                 track_index ++
                 nextTrackIndex = track_index
-            }else if( track_index < music_list.length -1 && isRandom == true){
+            }else if( track_index <= music_list.length -1 && isRandom == true){
                 prevTrackIndex = track_index
-                track_index = Math.floor(Math.random() * music_list.length-1)
+                track_index = Math.floor((Math.random() * (music_list.length-1))+1)
+                if(track_index == prevTrackIndex){
+                    track_index = Math.floor((Math.random() * (music_list.length-1))+1)
+                }
+                console.log(track_index)
+                nextTrackIndex = track_index
             }
             else{
                 nextTrackIndex = 0
