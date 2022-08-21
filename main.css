@@ -30,6 +30,6 @@ clear: both;
 .table-fixed thead > tr > th {
 float: left;
 }
-.track:active, .track:hover, .track:focus{
+.track:active, .track:focus{
     color: #0BD3FF;
 }
