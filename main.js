@@ -148,13 +148,6 @@ $(function(){
     $("#prev-btn").click(function(){
         prevTrack()
     })
-    // function randomTrack(){
-    //     if(isRandom){
-    //         pauseRandom()
-    //     }else{
-    //         playRandom()
-    //     }
-    // }
     //pause and play track
     function playPauseTrack(){
         if(isPlaying){
@@ -184,7 +177,7 @@ $(function(){
     
     //play next track
     function nextTrack(){
-        if(repeat = false || repeat == true){
+        if(repeat == false || repeat == true){
             if(track_index < music_list.length - 1 && isRandom == false){
                 track_index ++
                 nextTrackIndex = track_index
