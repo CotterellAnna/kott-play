@@ -1,7 +1,7 @@
 body{
     background: #0D0C0F;
     width: 100vw;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 input[type = range]{
     height: 4px;

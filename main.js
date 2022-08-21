@@ -74,8 +74,8 @@ $(function(){
         audio.load()
         $("#songs-el").append(`
                 <tr class="track">
-                    <td class="song-title col-7">${v.title}</td>
-                    <td class="artist col-5">${v.artist}</td>
+                    <td class="song-title col-6">${v.title}</td>
+                    <td class="artist col-6">${v.artist}</td>
                 </tr>
         `)
         
@@ -102,7 +102,7 @@ $(function(){
         current_track.src = music_list[track_index].audioFile
         current_track.load()
         $("#track-img").attr("src", music_list[track_index].cover)
-        $("#track-name").html(music_list[track_index].title)
+        $(".track-name").html(music_list[track_index].title)
         $("#track-artist").html(music_list[track_index].artist)
         current_track.onloadedmetadata = function() {
             $("#total-duration").html(convDuration(current_track.duration))
