@@ -1,7 +1,35 @@
 body{
     background: #0D0C0F;
     width: 100vw;
+    overflow: hidden;
 }
 input[type = range]{
     height: 4px;
+}
+tbody tr{
+    cursor: pointer;
+}
+.table-fixed tbody {
+    overflow-y: auto;
+    width: 100%;
+}
+.table-fixed thead,
+.table-fixed tbody,
+.table-fixed tr,
+.table-fixed td,
+.table-fixed th {
+display: block;
+}
+.table-fixed tr:after {
+content: "";
+display: block;
+visibility: hidden;
+clear: both;
+}
+.table-fixed tbody td,
+.table-fixed thead > tr > th {
+float: left;
+}
+.track:active, .track:hover, .track:focus{
+    color: #0BD3FF;
 }
