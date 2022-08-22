@@ -1,6 +1,4 @@
 $(function(){
-    // let client_id = "ZA-vkxrR9vuRZ29nWdnVKKalHzSGNKjESL_nyhzE36Bck6toE2sfIwAcWsfNJsK-"
-    // let client_secret = "OVe4lQt5lAgJOz03FRD8lArJWPlc8CvFvI6GJYyEJDQvEcs-teN2-oH1i_znFiBdQyrvwceDxHM8GGXfDVnSyw"
     let current_track = document.createElement('audio')
     current_track.preload = "metadata"
     let track_index = 0;
@@ -108,7 +106,6 @@ $(function(){
             $("#total-duration").html(convDuration(current_track.duration))
         }
         updateTimer = setInterval(setUpdate, current_track.duration)
-        $("#seek-slider").val()
         current_track.addEventListener('ended', nextTrack)
     }
     getTrack(track_index)
@@ -120,7 +117,9 @@ $(function(){
     }
     reset()
     // change current time of the track
-    $("#seek-slider").change(function(){
+    $("#seek-slider").on("input", function(){
+        clearInterval(updateTimer)
+        updateTimer = setInterval(setUpdate, current_track.duration)
         current_track.currentTime = current_track.duration * ($("#seek-slider").val() / 100)
     })
     // toggle shuffle
@@ -225,7 +224,7 @@ $(function(){
             seekPosition = current_track.currentTime * (100 / current_track.duration);
             convDuration(current_track.currentTime)
             $("#current-time").html(convDuration(current_track.currentTime))
-            // $("#seek-slider").val(seekPosition)
+            $("#seek-slider").val(seekPosition)
         }
     }
     // mute song

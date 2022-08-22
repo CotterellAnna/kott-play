@@ -33,3 +33,13 @@ float: left;
 .track:active, .track:focus{
     color: #0BD3FF;
 }
+#songs-el::-webkit-scrollbar{
+    width: 10px;
+}
+#songs-el::-webkit-scrollbar-track{
+    background: #525252cb;
+}
+#songs-el::-webkit-scrollbar-thumb{
+    background: rgb(245, 239, 239);
+    border-radius: 20px;
+}
