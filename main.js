@@ -290,13 +290,7 @@ $(function(){
             battery.addEventListener('chargingchange', function(){
                 console.log(battery.charging)
                 if(battery.charging == true){
-                    $("#icon").html(`<i class="ri-battery-charge-fill" style = "color:green;"></i>`)   
-                    $("#message").html(`Charging`)
-                    $.blockUI({message: $("#message-container")})
-                    clearTimeout(myTimeout)
-                    myTimeout = setTimeout(function(){
-                        $.unblockUI()
-                    }, 3000)
+                    $.unblockUI()
                 }
             })
         }
