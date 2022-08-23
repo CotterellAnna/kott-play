@@ -251,4 +251,54 @@ $(function(){
     $("#volume").change(function(){
         current_track.volume = $("#volume").val() / 100
     })
+
+    let isOnline = navigator.onLine
+    let myTimeout
+    navigator.connection.onchange = () => {
+        isOnline = navigator.onLine
+        checkInternet()
+    }
+
+    // check internet connectivity
+    function checkInternet(){
+        if (isOnline == false){
+            $("#icon").html(`<i class="ri-wifi-off-fill" style = "color: red"></i>`)
+            $("#message").html(`Connection lost`)
+            pauseTrack()
+            $.blockUI({message: $("#message-container")})
+        }else{
+            $("#icon").html(`<i class="ri-wifi-fill" style = "color: green;"></i>`)
+            $("#message").html(`Connection Restored`)
+            $.blockUI({message: $("#message-container")})
+            clearTimeout(myTimeout)
+            myTimeout = setTimeout(function(){
+                $.unblockUI()
+            }, 3000)
+        }
+    }
+
+    navigator.getBattery()
+        .then((battery) => {
+            let batteryLevel = battery.level * 100
+            battery.addEventListener('levelchange', function(){
+                if( batteryLevel <= 20){
+                    $("#icon").html(`<i class="ri-battery-low-fill" style = "color:green;"></i>`)   
+                    $("#message").html(`Battery low`) 
+                    $.blockUI({message: $("#message-container")})
+                }
+            })
+            battery.addEventListener('chargingchange', function(){
+                console.log(battery.charging)
+                if(battery.charging == true){
+                    $("#icon").html(`<i class="ri-battery-charge-fill" style = "color:green;"></i>`)   
+                    $("#message").html(`Charging`)
+                    $.blockUI({message: $("#message-container")})
+                    clearTimeout(myTimeout)
+                    myTimeout = setTimeout(function(){
+                        $.unblockUI()
+                    }, 3000)
+                }
+            })
+        }
+    )
 })
